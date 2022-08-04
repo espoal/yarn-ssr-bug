@@ -1,9 +1,11 @@
 import esbuild from 'esbuild'
+import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp'
+
 
 
 const options = {
-  entryPoints: [ 'src/server.mjs' ],
-  // plugins: [ pnpPlugin() ],
+  entryPoints: [ 'src/server.mjs', 'src/readable.mjs' ],
+  plugins: [ pnpPlugin() ],
   outdir: 'dist',
   bundle: true,
   splitting: false,

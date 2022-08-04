@@ -1,11 +1,10 @@
 import React from 'react'
 import { StaticRouter } from 'react-router-dom/server.js'
-import { renderToPipeableStream } from 'react-dom/server'
+import { renderToReadableStream } from 'react-dom/server.browser'
 import { App } from './app.mjs'
-import { PassThrough } from 'node:stream'
 
 
-const stream = renderToPipeableStream(
+const stream = await renderToReadableStream(
   <React.StrictMode>
     <StaticRouter location={"/"}>
       <App />
@@ -13,9 +12,6 @@ const stream = renderToPipeableStream(
   </React.StrictMode>, {})
 
 
-const pass = new PassThrough({ encoding: 'utf8'})
-stream.pipe(pass)
 
-
-for await (const chunk of pass)
+for await (const chunk of stream)
   console.log({ chunk })
