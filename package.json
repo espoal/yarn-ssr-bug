@@ -1,0 +1,15 @@
+{
+  "name": "yarn-ssr-bug",
+  "scripts": {
+    "build": "node build.mjs",
+    "print": "node dist/server.mjs"
+  },
+  "dependencies": {
+    "@yarnpkg/esbuild-plugin-pnp": "^3.0.0-rc.14",
+    "esbuild": "^0.14.53",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "packageManager": "yarn@4.0.0-rc.14"
+}
